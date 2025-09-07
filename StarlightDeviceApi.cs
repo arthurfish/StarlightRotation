@@ -100,7 +100,6 @@ namespace StarlightRotation
     class StarlightDeviceApi
     {
         private readonly LFDCQuadChannel _device;
-        private readonly string _targetSerialNumber;
 
         /// <summary>
         /// 获取当前连接设备的序列号。如果未连接，则返回 "未连接"。
@@ -115,15 +114,9 @@ namespace StarlightRotation
         /// <summary>
         /// 初始化 StarlightDeviceApi 的一个新实例。
         /// </summary>
-        /// <param name="targetSerialNumber">要连接的目标设备的4位序列号 (例如 "1266" 或 "0105")。</param>
-        public StarlightDeviceApi(string targetSerialNumber)
+        public StarlightDeviceApi()
         {
-            if (string.IsNullOrWhiteSpace(targetSerialNumber) || targetSerialNumber.Length != 4)
-            {
-                throw new ArgumentException("目标序列号必须是4位非空字符串。", nameof(targetSerialNumber));
-            }
             _device = new LFDCQuadChannel();
-            _targetSerialNumber = targetSerialNumber;
         }
 
         /// <summary>
@@ -142,21 +135,10 @@ namespace StarlightRotation
             if (_device.Connect())
             {
                 string foundSn = _device.SerialNumber();
-                if (foundSn == _targetSerialNumber)
-                {
-                    this.SerialNumber = foundSn;
-                    this.IsConnected = true;
-                    Console.WriteLine($"成功连接到设备，序列号: {this.SerialNumber}");
-                    return true;
-                }
-                else
-                {
-                    // 找到了设备，但不是我们想要的那个。
-                    // 由于底层库没有提供Disconnect()方法，我们无法继续搜索。
-                    // 这是一个库的设计局限。
-                    Console.WriteLine($"错误：连接到一个设备(SN: {foundSn})，但不是目标设备(SN: {_targetSerialNumber})。");
-                    return false;
-                }
+                this.SerialNumber = foundSn;
+                this.IsConnected = true;
+                Console.WriteLine($"成功连接到设备，序列号: {this.SerialNumber}");
+                return true;
             }
 
             Console.WriteLine($"错误：未能找到或连接到任何设备。");
@@ -166,14 +148,14 @@ namespace StarlightRotation
         /// <summary>
         /// 设置指定光源通道的输出电流。
         /// </summary>
-        /// <param name="channel">通道号，必须在 1 到 4 之间。</param>
+        /// <param name="channel">通道号，必须在 0 到 4 之间。</param>
         /// <param name="currentInAmps">输出电流，单位是安培(A)。安全范围为 0.0 到 1.0 A。</param>
         public void SetLightSourceCurrent(int channel, double currentInAmps)
         {
             EnsureConnected();
-            if (channel < 1 || channel > 4)
+            if (channel < 0 || channel > 4)
             {
-                throw new ArgumentOutOfRangeException(nameof(channel), "通道号必须在 1 到 4 之间。");
+                throw new ArgumentOutOfRangeException(nameof(channel), "通道号必须在 0 到 4 之间。");
             }
             // 根据您的补充说明，电流不要超过1A
             if (currentInAmps < 0.0 || currentInAmps > 1.0)
