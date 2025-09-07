@@ -49,7 +49,6 @@
             this.labelDevice1SerialNumber.Size = new System.Drawing.Size(62, 18);
             this.labelDevice1SerialNumber.TabIndex = 0;
             this.labelDevice1SerialNumber.Text = "label1";
-            this.labelDevice1SerialNumber.Click += new System.EventHandler(this.label1_Click);
             // 
             // labelDevice2SerialNumber
             // 
@@ -60,7 +59,6 @@
             this.labelDevice2SerialNumber.Size = new System.Drawing.Size(62, 18);
             this.labelDevice2SerialNumber.TabIndex = 0;
             this.labelDevice2SerialNumber.Text = "label1";
-            this.labelDevice2SerialNumber.Click += new System.EventHandler(this.label1_Click);
             // 
             // label1
             // 
@@ -71,7 +69,6 @@
             this.label1.Size = new System.Drawing.Size(206, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "Device1 Serial Number:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -82,7 +79,6 @@
             this.label2.Size = new System.Drawing.Size(206, 18);
             this.label2.TabIndex = 0;
             this.label2.Text = "Device2 Serial Number:";
-            this.label2.Click += new System.EventHandler(this.label1_Click);
             // 
             // label3
             // 
@@ -93,7 +89,7 @@
             this.label3.Size = new System.Drawing.Size(188, 18);
             this.label3.TabIndex = 0;
             this.label3.Text = "Light1 Read Number: ";
-            this.label3.Click += new System.EventHandler(this.label1_Click);
+
             // 
             // label4
             // 
@@ -104,7 +100,7 @@
             this.label4.Size = new System.Drawing.Size(170, 18);
             this.label4.TabIndex = 0;
             this.label4.Text = "Light2 Read Number";
-            this.label4.Click += new System.EventHandler(this.label1_Click);
+
             // 
             // LabelLight1ReadNumber
             // 
@@ -115,7 +111,6 @@
             this.LabelLight1ReadNumber.Size = new System.Drawing.Size(62, 18);
             this.LabelLight1ReadNumber.TabIndex = 0;
             this.LabelLight1ReadNumber.Text = "label1";
-            this.LabelLight1ReadNumber.Click += new System.EventHandler(this.label1_Click);
             // 
             // LabelLight2ReadNumber
             // 
@@ -126,12 +121,10 @@
             this.LabelLight2ReadNumber.Size = new System.Drawing.Size(62, 18);
             this.LabelLight2ReadNumber.TabIndex = 0;
             this.LabelLight2ReadNumber.Text = "label1";
-            this.LabelLight2ReadNumber.Click += new System.EventHandler(this.label1_Click);
             // 
             // timer1
             // 
             this.timer1.Interval = 500;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
             // Form1
             // 

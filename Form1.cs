@@ -62,19 +62,5 @@ namespace StarlightRotation
             LabelLight2ReadNumber.Text = "Value: " + d2Read.Value + "Gain: " + d2Read.Gain;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-            // 这个方法不需要改动
-        }
-
-        private void timer1_Tick_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
